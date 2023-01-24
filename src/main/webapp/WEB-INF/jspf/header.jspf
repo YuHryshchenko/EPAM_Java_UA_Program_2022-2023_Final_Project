@@ -1,0 +1,11 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12 inheader text-center">
+					<h1><fmt:message key="header.header" /></h1>
+						<div class="h5"><fmt:message key="header.subheader" /></div>
+				</div>
+			</div>
+		</div>

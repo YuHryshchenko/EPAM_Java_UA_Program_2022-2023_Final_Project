@@ -1,0 +1,162 @@
+body {
+	padding: 0;
+	margin: 0;
+	background-color: #fff;
+}
+
+.navbar {
+	background-color: #009999;
+}
+
+.nav-link , .navbar-brand {
+	color: #FFFFE0;
+	cursor: pointer;
+}
+
+.nav-link {
+	margin-right: 1em !important;
+}
+
+.nav-link:hover {
+	background: #f4f4f4;
+	color: #009999;
+}
+
+.navbar-collapse {
+	justify-content: flex-end;
+}
+
+.navbar-toggler {
+	background: #fff !important;
+}
+
+.locale {
+background-color: #009999;
+	color: #FFFFE0;
+}
+
+.formlocale {
+background-color: #009999;
+	color: #FFFFE0;
+	border: 0;
+}
+
+.header {
+	margin: auto;
+	padding: 2em;
+	padding-top: 10em;
+	padding-bottom: 6em;
+	background-color: #fff;
+}
+
+.inheader {
+	color: #009999;
+}
+
+.injumbo {
+	text-align: center;
+}
+
+.divlogin {
+	min-height: 250px;
+	border-radius: 5%;
+	padding: 1em;
+	padding-left: 2em;
+	background: linear-gradient(245deg, #339999 0%, #FFF 60%);
+	color: #000;
+}
+
+.divmain {
+	padding: 1em;
+	padding-left: 2em;
+	padding-bottom: 4em;
+	color: #000;
+}
+
+.list-group-item {
+	border-width: 0px !important;
+}
+
+.my-btn {
+	background-color: #dcdcdc;
+	color: #000;
+}
+
+.my-form{
+	margin-top: 1.5em !important;
+	margin-bottom: 1.5em !important;
+}
+
+.filter-list {
+list-style-type: none;
+margin: 0;
+padding: 0;
+text-align: left;
+}
+
+.filter-list-item {
+display: inline-block;
+margin: 2px 1px;
+padding: 0.6em 1.2em;
+text-align: center;
+background-color: #DCDCDC;
+color: #000;
+}
+
+.filter-list-active {
+display: inline-block;
+margin: 2px 1px;
+padding: 0.6em 1.2em;
+text-align: center;
+background-color: #FFFF00;
+color: #000;
+}
+
+a.filter-list-link {
+color: #000;
+text-decoration: none;
+}
+
+a.filter-list-link:visited {
+color: #000;
+text-decoration: none;
+}
+
+.sortdiv {
+	margin: 5px 1px;
+padding: 0.6em 1.2em;
+}
+
+.sortlink, .regularlink {
+	color: #009999;
+	text-decoration: none;
+}
+
+.sortlink:visited, .regularlink:visited {
+	color: #009999;
+	text-decoration: none;
+}
+
+.footer {
+	background-color: #009999;
+	color: #FFFFE0;
+	padding: 5px;
+}
+
+.courseactions {
+	padding: 2em;
+}
+
+.editmarks {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+.edit-delete-course {
+	display: inline;
+}
+
+td, th {
+	padding-left: 1em;
+	padding-right: 1em;
+}
