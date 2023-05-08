@@ -15,15 +15,15 @@ public class EditUserOpenCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws DBException {
-		log.debug("EditUserOpenCommand Command starts");
-		String address = PagesConst.EDITUSER;
+		log.debug("EditUserOpenCommand Command starts.");
+		String address = PagesConst.EDIT_USER;
 
 		int id = Integer.parseInt(request.getParameter("id"));
-		User editUser = UserManager.getInstance().getUser(id);
+		User editUser = UserManager.getInstance().getUserById(id);
 		log.debug("Instance of user for edit is received.");
 
 		request.getSession().setAttribute("editUser", editUser);
-		log.debug("EditUserOpen Command completed successfully");
+		log.debug("EditUserOpen Command completed successfully.");
 		return address;
 	}
 }

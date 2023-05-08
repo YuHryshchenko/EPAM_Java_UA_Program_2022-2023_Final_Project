@@ -120,7 +120,7 @@ public class Sorting {
 	 */
 	public static List<CourseStudent> sortCourseStudents(Comparator<CourseStudent> comparator,
 			List<CourseStudent> list) {
-		log.info("CourseStudent entities  are sorted according to given comparator.");
+		log.info("CourseStudent entities are sorted according to given comparator.");
 		return list.stream().sorted(comparator).collect(Collectors.toList());
 	}
 

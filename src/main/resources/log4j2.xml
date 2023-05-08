@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="error">
     <Appenders>
-
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
@@ -10,9 +9,7 @@
         </File>
     </Appenders>
     <Loggers>
-
         <Logger name="com.hryshchenko" level="trace" />
-
         <Root level="info">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="File"/>

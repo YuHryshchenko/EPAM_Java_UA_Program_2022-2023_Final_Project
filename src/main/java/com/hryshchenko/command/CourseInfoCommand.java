@@ -17,8 +17,8 @@ public class CourseInfoCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws DBException, AppException {
-		log.debug("CourseInfo Command starts");
-		String address = PagesConst.COURSEINFO;
+		log.debug("CourseInfo Command starts.");
+		String address = PagesConst.COURSE_INFO;
 
 		log.debug("Starting receiving parameters.");
 		int courseId = Integer.parseInt(request.getParameter("course-id"));
@@ -29,7 +29,7 @@ public class CourseInfoCommand implements Command {
 		request.setAttribute("currentDate", currentDate);
 		request.setAttribute("course", course);
 
-		log.debug("CourseInfo Command completed successfully");
+		log.debug("CourseInfo Command completed successfully.");
 		return address;
 	}
 }

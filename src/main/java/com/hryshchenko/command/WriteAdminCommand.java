@@ -4,6 +4,7 @@ import com.hryshchenko.command.util.Localizator;
 import com.hryshchenko.command.util.MessageSender;
 import com.hryshchenko.constant.AdminConst;
 import com.hryshchenko.constant.PagesConst;
+import com.hryshchenko.dao.DBException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,8 +21,8 @@ public class WriteAdminCommand implements Command {
 	private static final Logger log = LogManager.getLogger(WriteAdminCommand.class);
 
 	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response) throws AppException {
-		log.debug("Write Admin Command starts");
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws DBException, AppException {
+		log.debug("Write Admin Command starts.");
 		String address = PagesConst.CONTACT;
 
 		log.debug("Starting getting parameters for sending email.");
@@ -39,7 +40,7 @@ public class WriteAdminCommand implements Command {
 		String infoMessage = Localizator.getLocalizedString(request, "write_admin.info_message");
 		request.getSession().setAttribute("report", infoMessage);
 
-		log.debug("Write Admin Command completed successfully");
+		log.debug("Write Admin Command completed successfully.");
 		return address;
 	}
 }

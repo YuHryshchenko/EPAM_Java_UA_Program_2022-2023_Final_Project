@@ -29,7 +29,7 @@ public class MyProfileCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws DBException, AppException {
-		log.debug("MyProfile Command starts");
+		log.debug("MyProfile Command starts.");
 		String address = PagesConst.PROFILE;
 
 		log.debug("Starting getting parameters.");
@@ -45,7 +45,7 @@ public class MyProfileCommand implements Command {
 			setStudent(request, user);
 		}
 
-		log.debug("MyProfile Command completed successfully");
+		log.debug("MyProfile Command completed successfully.");
 		return address;
 	}
 
@@ -82,10 +82,10 @@ public class MyProfileCommand implements Command {
 	private List<Course> filter(String tab, List<Course> list) throws AppException {
 		if (tab.equalsIgnoreCase("past")) {
 			list = Filtering.filterFinishedCourses(list);
-			log.debug("Filtered courses are past");
+			log.debug("Filtered courses are past.");
 		} else if (tab.equalsIgnoreCase("future")) {
 			list = Filtering.filterFutureCourses(list);
-			log.debug("Filtered courses are future");
+			log.debug("Filtered courses are future.");
 		} else {
 			list = Filtering.filterCurrentCourses(list);
 			log.debug("Filtered courses are current.");
@@ -112,7 +112,7 @@ public class MyProfileCommand implements Command {
 			log.debug("Courses are sorted by amount of students.");
 		} else {
 			list = Sorting.sortCourses(Sorting.byTitleAscending, list);
-			log.debug("Courses are sorted by title descending.");
+			log.debug("Courses are sorted by title ascending.");
 		}
 		return list;
 	}

@@ -13,20 +13,28 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
 
 public class EditUserSaveCommand implements Command {
 	private static final Logger log = LogManager.getLogger(EditUserSaveCommand.class);
 
 	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response) throws DBException {
-		log.debug("EditUserSave Command starts");
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws DBException, AppException {
+		log.debug("EditUserSave Command starts.");
 
 		String address = PagesConst.INDEX;
 		HttpSession session = request.getSession();
 		User editUser = (User) session.getAttribute("editUser");
 		log.debug("User for edit is received.");
 
-		User newUser = assembleNewUser(request, editUser);
+		User newUser = null;
+		try {
+		newUser = assembleNewUser(request, editUser);
+		} catch (ParseException e) {
+			log.error("Failure while getting date." + e.getMessage());
+			throw new AppException("edit_user.date_failure", e);
+		}
+
 		UserManager.getInstance().updateUser(newUser);
 
 		if (!isAdmin(session)) {
@@ -34,10 +42,10 @@ public class EditUserSaveCommand implements Command {
 			log.debug("Instance of authorizedUser is substituted.");
 		}
 
-		String message = Localizator.getLocalizedString(request, "edituser.info_message");
+		String message = Localizator.getLocalizedString(request, "edit_user.info_message");
 		session.setAttribute("infoMessage", message);
 
-		log.debug("EditUserSave Command completed successfully");
+		log.debug("EditUserSave Command completed successfully.");
 		return address;
 	}
 
@@ -48,16 +56,18 @@ public class EditUserSaveCommand implements Command {
 	 * @param editUser
 	 * @return Updated user instance.
 	 */
-	private User assembleNewUser(HttpServletRequest request, User editUser) {
+	private User assembleNewUser(HttpServletRequest request, User editUser) throws ParseException {
 		User newUser = new User();
 		String password = request.getParameter("password");
 		String status = request.getParameter("status");
+
 		if (password.isEmpty()) {
 			password = editUser.getPassword();
 		} else {
 			String salt = editUser.getSalt();
 			password = PasswordUtil.hashSaltedPassword(password, salt);
 		}
+
 		if (status == null) {
 			status = editUser.getStatus();
 		}
@@ -85,10 +95,10 @@ public class EditUserSaveCommand implements Command {
 	private boolean isAdmin(HttpSession session) {
 		Role role = (Role) session.getAttribute("role");
 		if (role.getName().equalsIgnoreCase("admin")) {
-			log.debug("Current user role is admin");
+			log.debug("Current user role is admin.");
 			return true;
 		}
-		log.debug("Current user role is not admin");
+		log.debug("Current user role is not admin.");
 		return false;
 	}
 }

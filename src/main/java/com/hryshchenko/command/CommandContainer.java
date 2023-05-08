@@ -18,24 +18,24 @@ public class CommandContainer {
 
 	static {
 		COMMANDS = new HashMap<>();
-		COMMANDS.put("courseinfo", new CourseInfoCommand());
-		COMMANDS.put("createcourseopen", new CreateCourseOpenCommand());
-		COMMANDS.put("createcoursesave", new CreateCourseSaveCommand());
-		COMMANDS.put("editcourseopen", new EditCourseOpenCommand());
-		COMMANDS.put("editcoursesave", new EditCourseSaveCommand());
-		COMMANDS.put("edituseropen", new EditUserOpenCommand());
-		COMMANDS.put("editusersave", new EditUserSaveCommand());
-		COMMANDS.put("getallcourses", new GetAllCoursesCommand());
-		COMMANDS.put("getallusers", new GetAllUsersCommand());
+		COMMANDS.put("course_info", new CourseInfoCommand());
+		COMMANDS.put("create_course_open", new CreateCourseOpenCommand());
+		COMMANDS.put("create_course_save", new CreateCourseSaveCommand());
+		COMMANDS.put("edit_course_open", new EditCourseOpenCommand());
+		COMMANDS.put("edit_course_save", new EditCourseSaveCommand());
+		COMMANDS.put("edit_user_open", new EditUserOpenCommand());
+		COMMANDS.put("edit_user_save", new EditUserSaveCommand());
+		COMMANDS.put("get_all_courses", new GetAllCoursesCommand());
+		COMMANDS.put("get_all_users", new GetAllUsersCommand());
 		COMMANDS.put("login", new LoginCommand());
 		COMMANDS.put("logout", new LogoutCommand());
-		COMMANDS.put("markopen", new MarkOpenCommand());
-		COMMANDS.put("marksave", new MarkSaveCommand());
-		COMMANDS.put("myprofile", new MyProfileCommand());
+		COMMANDS.put("mark_open", new MarkOpenCommand());
+		COMMANDS.put("mark_save", new MarkSaveCommand());
+		COMMANDS.put("my_profile", new MyProfileCommand());
 		COMMANDS.put("register", new RegisterCommand());
-		COMMANDS.put("removecourse", new RemoveCourseCommand());
+		COMMANDS.put("remove_course", new RemoveCourseCommand());
 		COMMANDS.put("subscribe", new SubscribeCommand());
-		COMMANDS.put("writeadmin", new WriteAdminCommand());
+		COMMANDS.put("write_admin", new WriteAdminCommand());
 		log.debug("CommandContainer was initialized successfully.");
 		log.trace("Amount of commands: " + COMMANDS.size());
 	}

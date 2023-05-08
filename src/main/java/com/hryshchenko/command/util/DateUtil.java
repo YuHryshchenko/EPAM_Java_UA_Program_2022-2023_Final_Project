@@ -26,15 +26,15 @@ public class DateUtil {
 	 */
 	public static Date getCurrentDate() throws AppException {
 		Date currentDate = new Date();
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		String currentDateString = format.format(currentDate);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String currentDateString = dateFormat.format(currentDate);
 		try {
-			currentDate = format.parse(currentDateString);
+			currentDate = dateFormat.parse(currentDateString);
 		} catch (ParseException e) {
-			log.error("Failed to get current date. " + e);
-			throw new AppException("dateutil.failure", e);
+			log.error("Failed to get current date. " + e + ".");
+			throw new AppException("date_util.failure", e);
 		}
-		log.debug("Current date is received");
+		log.debug("Current date is received.");
 		return currentDate;
 	}
 

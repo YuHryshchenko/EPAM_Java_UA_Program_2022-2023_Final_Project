@@ -78,7 +78,7 @@ public class MySqlUserDAO implements UserDAO {
 	 * @throws SQLException
 	 */
 	@Override
-	public User getUser(Connection con, String login) throws SQLException {
+	public User getUserByLogin(Connection con, String login) throws SQLException {
 		User user = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -104,8 +104,7 @@ public class MySqlUserDAO implements UserDAO {
 	 * @return An instance of User.
 	 * @throws SQLException
 	 */
-	@Override
-	public User getUser(Connection con, int id) throws SQLException {
+	public User getUserById(Connection con, int id) throws SQLException {
 		User user = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -163,7 +162,7 @@ public class MySqlUserDAO implements UserDAO {
 			throws SQLException {
 		CourseStudent cs = new CourseStudent();
 		cs.setCourse(course);
-		cs.setStudent(getUser(con, rs.getInt("student_id")));
+		cs.setStudent(getUserById(con, rs.getInt("student_id")));
 		cs.setMark(rs.getInt("mark"));
 		return cs;
 	}

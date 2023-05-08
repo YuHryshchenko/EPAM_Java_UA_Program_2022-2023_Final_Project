@@ -17,8 +17,8 @@ public class CreateCourseOpenCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws DBException {
-		log.debug("CreateCourseOpen Command starts");
-		String address = PagesConst.CREATECOURSE;
+		log.debug("CreateCourseOpen Command starts.");
+		String address = PagesConst.CREATE_COURSE;
 
 		log.debug("Receiving teachers list.");
 		List<User> teachers = UserManager.getInstance().getUsers();
@@ -27,7 +27,7 @@ public class CreateCourseOpenCommand implements Command {
 
 		request.setAttribute("teachers", teachers);
 
-		log.debug("CreateCourseOpen Command completed successfully");
+		log.debug("CreateCourseOpen Command completed successfully.");
 		return address;
 	}
 }

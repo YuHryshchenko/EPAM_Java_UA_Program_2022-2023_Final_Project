@@ -1,6 +1,7 @@
 package com.hryshchenko.command;
 
 import com.hryshchenko.constant.PagesConst;
+import com.hryshchenko.dao.DBException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,8 +19,8 @@ public class LogoutCommand implements Command {
 	private static final Logger log = LogManager.getLogger(LogoutCommand.class);
 
 	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		log.debug("Logout Command starts");
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws DBException, AppException{
+		log.debug("Logout Command starts.");
 		String address = PagesConst.INDEX;
 		HttpSession session = request.getSession(false);
 
@@ -28,7 +29,7 @@ public class LogoutCommand implements Command {
 			log.info("Session is invalidated. Users logs out from system.");
 		}
 
-		log.debug("Logout Command completed successfully");
+		log.debug("Logout Command completed successfully.");
 		return address;
 	}
 }

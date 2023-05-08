@@ -18,17 +18,17 @@ public class EncodingFilter implements Filter {
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		log.debug("Starting initialization Encoding Filter");
+		log.debug("Starting initialization Encoding Filter.");
 		encoding = filterConfig.getInitParameter("encoding");
-		log.debug("Ending initialization Encoding Filter");
+		log.debug("Ending initialization Encoding Filter.");
 	}
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		log.debug("Starting Encoding Filter");
+		log.debug("Starting Encoding Filter.");
 		request.setCharacterEncoding(encoding);
-		log.debug("Finishing Encoding Filter");
+		log.debug("Finishing Encoding Filter.");
 		chain.doFilter(request, response);
 	}
 }

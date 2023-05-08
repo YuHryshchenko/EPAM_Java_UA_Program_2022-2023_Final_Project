@@ -23,14 +23,14 @@ public class SubscribeCommand implements Command {
 	private static final Logger log = LogManager.getLogger(SubscribeCommand.class);
 
 	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response) throws DBException {
-		log.debug("Subscribe Command starts");
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws DBException, AppException {
+		log.debug("Subscribe Command starts.");
 
 		int courseId = Integer.parseInt(request.getParameter("course-id"));
 		int studentId = Integer.parseInt(request.getParameter("student-id"));
 		log.debug("Parameters are received.");
 
-		String address = "controller?command=courseinfo&course-id=" + courseId;
+		String address = "controller?command=course_info&course-id=" + courseId;
 		HttpSession session = request.getSession();
 		User authorizedUser = (User) session.getAttribute("authorizedUser");
 
@@ -42,7 +42,7 @@ public class SubscribeCommand implements Command {
 		String message = Localizator.getLocalizedString(request, "subscribe.info_message");
 		session.setAttribute("infoMessage", message);
 
-		log.debug("Subscribe Command completed successfully");
+		log.debug("Subscribe Command completed successfully.");
 		return address;
 	}
 }

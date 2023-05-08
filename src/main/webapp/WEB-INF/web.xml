@@ -23,110 +23,101 @@
 	<filter>
 		<filter-name>Access Filter</filter-name>
 		<filter-class>com.hryshchenko.filter.AccessFilter</filter-class>
-
 		<init-param>
 			<param-name>guest-jsp</param-name>
 			<param-value>
 				/index.jsp
 				/contact.jsp
 				/error.jsp
-				/changelocale.jsp
-								/register.jsp
+				/change_locale.jsp
+				/register.jsp
 			</param-value>
 		</init-param>
-
 		<init-param>
 			<param-name>guest-commands</param-name>
 			<param-value>
 				login
-				courseinfo
-				getallcourses
-																																register
-				writeadmin
+				course_info
+				get_all_courses
+				register
+				write_admin
 			</param-value>
 		</init-param>
-
 		<init-param>
 			<param-name>student-jsp</param-name>
 			<param-value>
 				/index.jsp
 				/contact.jsp
 				/error.jsp
-				/changelocale.jsp
+				/change_locale.jsp
 			</param-value>
 		</init-param>
-
 		<init-param>
 			<param-name>student-commands</param-name>
 			<param-value>
 				logout
-				courseinfo
-				edituseropen
-				editusersave
-				getallcourses
-				myprofile
+				course_info
+				edit_user_open
+				edit_user_save
+				get_all_courses
+				my_profile
 				subscribe
-				writeadmin
+				write_admin
 			</param-value>
 		</init-param>
-
 		<init-param>
 			<param-name>teacher-jsp</param-name>
 			<param-value>
 				/contact.jsp
 				/error.jsp
 				/index.jsp
-				/changelocale.jsp
-				/marksheet.jsp
+				/change_locale.jsp
+				/mark_sheet.jsp
 			</param-value>
 		</init-param>
-
 		<init-param>
 			<param-name>teacher-commands</param-name>
 			<param-value>
 				logout
-				courseinfo
-				edituseropen
-				editusersave
-				getallcourses
-				markopen
-				marksave
-				myprofile
-				writeadmin
+				course_info
+				edit_user_open
+				edit_user_save
+				get_all_courses
+				mark_open
+				mark_save
+				my_profile
+				write_admin
 			</param-value>
 		</init-param>
-
 		<init-param>
 			<param-name>admin-jsp</param-name>
 			<param-value>
 				/contact.jsp
 				/error.jsp
 				/index.jsp
-				/changelocale.jsp
+				/change_locale.jsp
 				/register.jsp
 			</param-value>
 		</init-param>
-
 		<init-param>
 			<param-name>admin-commands</param-name>
 			<param-value>
 				logout
-				courseinfo
-				createcourseopen
-				createcoursesave
-				editcourseopen
-				editcoursesave
-				edituseropen
-				editusersave
-				getallcourses
-				getallusers
-				myprofile
+				course_info
+				create_course_open
+				create_course_save
+				edit_course_open
+				edit_course_save
+				edit_user_open
+				edit_user_save
+				get_all_courses
+				get_all_users
+				my_profile
 				register
-				removecourse
-				writeadmin
+				remove_course
+				write_admin
 			</param-value>
 		</init-param>
-
 	</filter>
 	
 	<filter-mapping>
@@ -149,6 +140,5 @@
 		<param-name>locales</param-name>
 		<param-value>/WEB-INF/locales.properties</param-value>
 	</context-param>
-
 
 </web-app>

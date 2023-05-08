@@ -26,7 +26,7 @@ public class DBUtil {
 				ac.close();
 				log.debug("Resource is closed.");
 			} catch (Exception e) {
-				log.error("Failed to close resourse. " + e.getMessage());
+				log.error("Failed to close resource. " + e.getMessage());
 			}
 		}
 	}

@@ -5,7 +5,7 @@
     
   <tlib-version>1.1</tlib-version>
   <short-name>ctg</short-name>
-  <uri>customtags</uri>
+  <uri>custom_tags</uri>
 
   <tag>
     <name>show-student-courses</name>

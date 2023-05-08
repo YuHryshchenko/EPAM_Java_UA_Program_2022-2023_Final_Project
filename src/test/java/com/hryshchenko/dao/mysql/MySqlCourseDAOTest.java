@@ -140,7 +140,7 @@ public class MySqlCourseDAOTest {
 		Mockito.when(ps.executeQuery()).thenReturn(rs);
 
 		Mockito.when(rs.next()).thenReturn(true).thenReturn(true).thenReturn(false);
-		Mockito.when(rs.getString("title")).thenReturn("Elementary Spanish").thenReturn("Elementary Ukrainian");
+		Mockito.when(rs.getString("title")).thenReturn("Elementary Spanish").thenReturn("Elementary Italian");
 		DBUtil.close(rs);
 
 		List<Course> list = courseDAO.getCoursesByTeacher(con, 6);
@@ -154,7 +154,7 @@ public class MySqlCourseDAOTest {
 		Mockito.when(ps.executeQuery()).thenReturn(rs);
 
 		Mockito.when(rs.next()).thenReturn(true).thenReturn(true).thenReturn(false);
-		Mockito.when(rs.getString("title")).thenReturn("Elementary Spanish").thenReturn("Elementary Ukrainian");
+		Mockito.when(rs.getString("title")).thenReturn("Elementary Spanish").thenReturn("Elementary Italian");
 		DBUtil.close(rs);
 
 		List<Course> list = courseDAO.getCoursesByTeacher(con, 6);

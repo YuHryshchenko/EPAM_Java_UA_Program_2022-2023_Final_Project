@@ -36,8 +36,8 @@ public class ShowCoursesOfStudent extends TagSupport {
 				out.print("<ul class='list-group'>");
 				for (CourseStudent courseStudent : list) {
 					out.print("<li class='list-group-item'>");
-					out.print("<a href='controller?command=courseinfo&course-id=" + courseStudent.getCourse().getId()
-							+ "' class='regularlink' title='Look course info'>");
+					out.print("<a href='controller?command=course_info&course-id=" + courseStudent.getCourse().getId()
+							+ "' class='regular_link' title='Look course info'>");
 					out.print(courseStudent);
 					if (courseStudent.getMark() > 0) {
 						out.print(" " + courseStudent.getMark());
@@ -49,7 +49,8 @@ public class ShowCoursesOfStudent extends TagSupport {
 				log.trace("List of student's courses is printed.");
 			}
 		} catch (IOException e) {
-			log.error("Failure while printing list of student's courses. " + e);
+			log.error("Failure while printing list of student's courses. " + e.getMessage());
+			throw new JspException("printing_list.failure", e);
 		}
 		return SKIP_BODY;
 	}

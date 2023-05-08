@@ -15,9 +15,9 @@ import java.util.List;
  *
  */
 public interface UserDAO {
-	User getUser(Connection con, String login) throws SQLException;
+	User getUserByLogin(Connection con, String login) throws SQLException;
 
-	User getUser(Connection con, int id) throws SQLException;
+	User getUserById(Connection con, int id) throws SQLException;
 
 	List<User> getUsers(Connection con) throws SQLException;
 

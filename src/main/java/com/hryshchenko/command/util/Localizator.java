@@ -39,11 +39,12 @@ public class Localizator {
 		}
 
 		switch (locale) {
-		case "uk":
-			return ukRB.getString(key);
-		default:
-			return enRB.getString(key);
+			case "uk":
+				return ukRB.getString(key);
+			default:
+				return enRB.getString(key);
 		}
+
 	}
 
 	/**

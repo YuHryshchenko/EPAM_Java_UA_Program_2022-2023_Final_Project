@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
 import java.util.Properties;
 
 /**
@@ -45,7 +46,6 @@ public class MessageSender {
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
 			message.setSubject(subject);
 			message.setText(sendMessage);
-
 			Transport.send(message);
 			log.info("Message has been sent to " + to);
 		} catch (MessagingException e) {

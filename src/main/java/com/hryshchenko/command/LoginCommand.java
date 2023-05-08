@@ -24,27 +24,27 @@ public class LoginCommand implements Command {
 	private static final Logger log = LogManager.getLogger(LoginCommand.class);
 
 	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response) throws DBException {
-		log.debug("LoginCommand starts");
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws DBException, AppException {
+		log.debug("LoginCommand starts.");
 
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
 
 		String address = PagesConst.INDEX;
-		User user = UserManager.getInstance().getUser(login);
+		User user = UserManager.getInstance().getUserByLogin(login);
 
 		if (!authorize(request, user, password)) {
 			return address;
 		}
 
 		log.info("User " + login + " passed authorization.");
-		address = "controller?command=myprofile&tab=now&sort=az&page=1";
+		address = "controller?command=my_profile&tab=now&sort=az&page=1";
 
 		HttpSession session = request.getSession();
 		session = setAttributes(user, session);
 
-		log.info(login + " enters the system");
-		log.debug("Login Command finishes");
+		log.info(login + " enters the system.");
+		log.debug("Login Command finishes.");
 		return address;
 	}
 
@@ -58,12 +58,12 @@ public class LoginCommand implements Command {
 	 */
 	private boolean authorize(HttpServletRequest request, User user, String password) {
 		if (user == null) {
-			log.error("Wrong login. Not found user ");
+			log.error("Wrong login. Not found user. ");
 			String message = Localizator.getLocalizedString(request, "login.wrong_login");
 			request.getSession().setAttribute("errorLogin", message);
 			return false;
 		}
-		log.trace("Found user by login " + user.getLogin());
+		log.trace("Found user by login " + user.getLogin() + ".");
 
 		String salt = user.getSalt();
 		String hashedSaltedPassword = PasswordUtil.hashSaltedPassword(password, salt);
@@ -90,7 +90,7 @@ public class LoginCommand implements Command {
 	 * @return session with attributes
 	 * @throws DBException
 	 */
-	private HttpSession setAttributes(User user, HttpSession session) throws DBException {
+	private HttpSession setAttributes(User user, HttpSession session) {
 		Role role = Role.getRole(user);
 		session.setAttribute("authorizedUser", user);
 		session.setAttribute("role", role);
@@ -99,4 +99,5 @@ public class LoginCommand implements Command {
 		log.debug("Session attributes are set.");
 		return session;
 	}
+
 }

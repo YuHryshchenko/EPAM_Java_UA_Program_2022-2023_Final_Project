@@ -19,8 +19,8 @@ public class EditCourseOpenCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws DBException {
-		log.debug("EditCourseOpen Command starts");
-		String address = PagesConst.EDITCOURSE;
+		log.debug("EditCourseOpen Command starts.");
+		String address = PagesConst.EDIT_COURSE;
 
 		int courseId = Integer.parseInt(request.getParameter("course-id"));
 		Course editCourse = CourseManager.getInstance().getCourse(courseId);
@@ -33,7 +33,8 @@ public class EditCourseOpenCommand implements Command {
 		request.getSession().setAttribute("editCourse", editCourse);
 		request.setAttribute("teachers", teachers);
 
-		log.debug("EditCourseOpen Command completed successfully");
+		log.debug("EditCourseOpen Command completed successfully.");
 		return address;
 	}
+
 }

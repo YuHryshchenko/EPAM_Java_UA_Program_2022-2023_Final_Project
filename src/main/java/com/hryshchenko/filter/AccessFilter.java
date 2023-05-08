@@ -26,7 +26,7 @@ public class AccessFilter implements Filter {
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		log.debug("Starting initialization Access Filter");
+		log.debug("Starting initialization Access Filter.");
 		list = asList(filterConfig.getInitParameter("guest-commands"));
 		mapCommands.put("guest", list);
 		list = asList(filterConfig.getInitParameter("guest-jsp"));
@@ -43,18 +43,33 @@ public class AccessFilter implements Filter {
 		mapCommands.put("admin", list);
 		list = asList(filterConfig.getInitParameter("admin-jsp"));
 		mapJsp.put("admin", list);
-		log.debug("Finishing initialization Access Filter");
+		log.debug("Finishing initialization Access Filter.");
+	}
+
+	/**
+	 * Splits a string into tokens.
+	 *
+	 * @param str
+	 * @return An ArrayList of tokens from a given string.
+	 */
+	private List<String> asList(String str) {
+		List<String> list = new ArrayList<>();
+		StringTokenizer stk = new StringTokenizer(str);
+		while (stk.hasMoreTokens()) {
+			list.add(stk.nextToken());
+		}
+		return list;
 	}
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		log.debug("Starting Access Filter");
+		log.debug("Starting Access Filter.");
 		if (checkAccess(request)) {
-			log.debug("Finishing Access Filter");
+			log.debug("Finishing Access Filter.");
 			chain.doFilter(request, response);
 		} else {
-			String message = Localizator.getLocalizedString((HttpServletRequest) request, "accessfilter.error");
+			String message = Localizator.getLocalizedString((HttpServletRequest) request, "access_filter.error");
 			request.setAttribute("errorMessage", message);
 			log.error("Forwarding to error page.");
 			request.getRequestDispatcher(PagesConst.ERROR).forward(request, response);
@@ -89,18 +104,4 @@ public class AccessFilter implements Filter {
 		return false;
 	}
 
-	/**
-	 * Splits a string into tokens.
-	 * 
-	 * @param str
-	 * @return An ArrayList of tokens from a given string.
-	 */
-	private List<String> asList(String str) {
-		List<String> list = new ArrayList<>();
-		StringTokenizer stk = new StringTokenizer(str);
-		while (stk.hasMoreTokens()) {
-			list.add(stk.nextToken());
-		}
-		return list;
-	}
 }

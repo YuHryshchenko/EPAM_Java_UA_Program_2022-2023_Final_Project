@@ -67,7 +67,7 @@ The system administrator has the rights:
 - блокування, розблокування студента.
 
 
-### **DATABASE MODEL**
+### **DATABASE SCHEMA**
 
 ![facultative.png](facultative.png)
 

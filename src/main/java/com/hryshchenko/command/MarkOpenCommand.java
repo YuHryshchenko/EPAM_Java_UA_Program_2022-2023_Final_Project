@@ -23,17 +23,17 @@ public class MarkOpenCommand implements Command {
 	private static final Logger log = LogManager.getLogger(MarkOpenCommand.class);
 
 	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response) throws DBException {
-		log.debug("MarkOpen Command starts");
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws DBException, AppException {
+		log.debug("MarkOpen Command starts.");
 
-		String address = PagesConst.MARKSHEET;
+		String address = PagesConst.MARK_SHEET;
 		HttpSession session = request.getSession();
 		Course course = (Course) session.getAttribute("course");
 		List<CourseStudent> studentsOfCourse = UserManager.getInstance().getStudentsOfCourse(course);
 		log.debug("List of students of course is received.");
 
 		session.setAttribute("studentsOfCourse", studentsOfCourse);
-		log.debug("MarkOpen Command completed successfully");
+		log.debug("MarkOpen Command completed successfully.");
 
 		return address;
 	}

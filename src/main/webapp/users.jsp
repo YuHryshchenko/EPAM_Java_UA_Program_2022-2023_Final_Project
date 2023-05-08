@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t" %>
 
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <fmt:message var="title" key="users_jsp.title" scope="page" />
 <head>
@@ -25,22 +25,22 @@
 					<div class="filterdiv">
 						<ul class="filter-list">
 							<li class=${param.tab == "teachers" ? "filter-list-active" : "filter-list-item"}>
-								<a href="controller?command=getallusers&tab=teachers&sort=${param.sort}&page=1" class="filter-list-link"><fmt:message key="users_jsp.teachers" /></a>
+								<a href="controller?command=get_all_users&tab=teachers&sort=${param.sort}&page=1" class="filter-list-link"><fmt:message key="users_jsp.teachers" /></a>
 							</li>
 							<li class=${param.tab == "students" ? "filter-list-active" : "filter-list-item"}>
-								<a href="controller?command=getallusers&tab=students&sort=${param.sort}&page=1" class="filter-list-link"><fmt:message key="users_jsp.students" /></a>
+								<a href="controller?command=get_all_users&tab=students&sort=${param.sort}&page=1" class="filter-list-link"><fmt:message key="users_jsp.students" /></a>
 							</li>
 						</ul>
 					</div>
 
 					<div class="sortdiv">
-						<fmt:message key="users_jsp.sortby" /> <a href="controller?command=getallusers&tab=${param.tab}&sort=az&page=${param.page}" class="sortlink">A-Z</a> | 
-						<a href="controller?command=getallusers&tab=${param.tab}&sort=za&page=${param.page}" class="sortlink">Z-A</a>
+						<fmt:message key="users_jsp.sortby" /> <a href="controller?command=get_all_users&tab=${param.tab}&sort=az&page=${param.page}" class="sortlink">A-Z</a> |
+						<a href="controller?command=get_all_users&tab=${param.tab}&sort=za&page=${param.page}" class="sortlink">Z-A</a>
 					</div>
 
 					<ul class="list-group">
 						<c:forEach items="${list}" var="user">
-							<li class="list-group-item"><a href="controller?command=edituseropen&id=${user.id}" class="regularlink" title="Edit user">${user}</a></li>
+							<li class="list-group-item"><a href="controller?command=edit_user_open&id=${user.id}" class="regular_link" title="Edit user">${user}</a></li>
 						</c:forEach>
 					</ul>
 

@@ -28,21 +28,22 @@ public class Controller extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		log.debug("Starting get request");
+		log.debug("Starting get request.");
 		String address = PagesConst.ERROR;
 		String commandName = request.getParameter("command");
 		Command command = CommandContainer.getCommand(commandName);
 		log.trace("Command name is " + commandName);
 
 		try {
+			request.setAttribute("requestCleanURL", "controller");
 			address = command.execute(request, response);
-			log.trace("Address to forward to is " + address);
+			log.trace("Address to forward to is " + address + ".");
 		} catch (DBException | AppException e) {
-			log.error("Exception catched in Controller " + e);
+			log.error("Exception caught in Controller " + e + ".");
 			String errorMessage = Localizator.getLocalizedString(request, e.getMessage());
 			request.setAttribute("errorMessage", errorMessage);
 		} catch (Exception e) {
-			log.error("Exception catched in Controller " + e);
+			log.error("Exception caught in Controller " + e + ".");
 			String errorMessage = Localizator.getLocalizedString(request, "controller.exception");
 			request.setAttribute("errorMessage", errorMessage);
 		}
@@ -61,18 +62,19 @@ public class Controller extends HttpServlet {
 
 		try {
 			address = command.execute(request, response);
-			log.trace("Address to redirect to is " + address);
+			log.trace("Address to redirect to is " + address + ".");
 		} catch (DBException | AppException e) {
-			log.error("Exception catched in Controller " + e);
+			log.error("Exception caught in Controller " + e + ".");
 			String errorMessage = Localizator.getLocalizedString(request, e.getMessage());
 			request.getSession().setAttribute("errorMessage", errorMessage);
 		} catch (Exception e) {
-			log.error("Exception catched in Controller " + e);
+			log.error("Exception caught in Controller " + e + ".");
 			String errorMessage = Localizator.getLocalizedString(request, "controller.exception");
 			request.setAttribute("errorMessage", errorMessage);
 		}
 
-		log.debug("Completing post request");
+		log.debug("Completing post request.");
 		response.sendRedirect(address);
 	}
+
 }

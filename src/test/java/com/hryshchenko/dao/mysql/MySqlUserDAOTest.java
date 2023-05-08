@@ -55,7 +55,7 @@ public class MySqlUserDAOTest {
 		Mockito.when(rs.getString("login")).thenReturn("admin");
 		DBUtil.close(rs);
 
-		User user = userDAO.getUser(con, "admin");
+		User user = userDAO.getUserByLogin(con, "admin");
 		assertEquals("admin", user.getLogin());
 	}
 
@@ -64,10 +64,11 @@ public class MySqlUserDAOTest {
 		ResultSet rs = Mockito.mock(ResultSet.class);
 		Mockito.when(con.prepareStatement(MySqlUserDAO.GET_USER_BY_LOGIN)).thenReturn(ps);
 		Mockito.when(ps.executeQuery()).thenReturn(rs);
+
 		Mockito.when(rs.next()).thenReturn(false);
 		DBUtil.close(rs);
 
-		User user = userDAO.getUser(con, "pushkin");
+		User user = userDAO.getUserByLogin(con, "hrynchenko");
 		assertNull(user);
 	}
 
@@ -81,7 +82,7 @@ public class MySqlUserDAOTest {
 		Mockito.when(rs.getInt("id")).thenReturn(1);
 		DBUtil.close(rs);
 
-		User user = userDAO.getUser(con, 1);
+		User user = userDAO.getUserById(con, 1);
 		assertEquals(1, user.getId());
 	}
 
@@ -90,10 +91,11 @@ public class MySqlUserDAOTest {
 		ResultSet rs = Mockito.mock(ResultSet.class);
 		Mockito.when(con.prepareStatement(MySqlUserDAO.GET_USER_BY_ID)).thenReturn(ps);
 		Mockito.when(ps.executeQuery()).thenReturn(rs);
+
 		Mockito.when(rs.next()).thenReturn(false);
 		DBUtil.close(rs);
 
-		User user = userDAO.getUser(con, 2020);
+		User user = userDAO.getUserById(con, 2020);
 		assertNull(user);
 	}
 

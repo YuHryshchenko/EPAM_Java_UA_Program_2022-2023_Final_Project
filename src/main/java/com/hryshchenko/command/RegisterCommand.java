@@ -25,7 +25,7 @@ public class RegisterCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws DBException, AppException {
-		log.debug("Register Command starts");
+		log.debug("Register Command starts.");
 		String address = PagesConst.INDEX;
 
 		log.debug("Starting getting parameters for Register Command.");
@@ -49,7 +49,7 @@ public class RegisterCommand implements Command {
 		String message = Localizator.getLocalizedString(request, "register.info_message");
 		request.getSession().setAttribute("infoMessage", message);
 
-		log.debug("Register Command completed successfully");
+		log.debug("Register Command completed successfully.");
 		return address;
 	}
 
@@ -79,7 +79,7 @@ public class RegisterCommand implements Command {
 		user.setLastName(lastName);
 		user.setRoleId(roleId);
 
-		log.info("Registering user " + user);
+		log.info("Registering user " + user + ".");
 		return user;
 	}
 
@@ -92,7 +92,7 @@ public class RegisterCommand implements Command {
 	 * @throws AppException
 	 */
 	private void sendRegistrationMessage(String to, String firstName, String lastName) throws AppException {
-		String subject = "Registration on Facultative Courses website";
+		String subject = "Registration on Facultative Courses website.";
 		String sendMessage = "Dear " + firstName + " " + lastName
 				+ ", you have successfully registered on Facultative Courses website. Now you can subscribe to available courses.";
 		MessageSender.sendMessage(to, subject, sendMessage);

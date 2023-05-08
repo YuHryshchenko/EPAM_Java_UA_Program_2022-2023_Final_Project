@@ -25,7 +25,7 @@ public class GetAllUsersCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws DBException {
-		log.debug("GetAllUsers Command starts");
+		log.debug("GetAllUsers Command starts.");
 		String address = PagesConst.USERS;
 
 		String tab = request.getParameter("tab");
@@ -37,7 +37,7 @@ public class GetAllUsersCommand implements Command {
 		users = sortList(sort, users);
 		request = Paginator.setPagination(request, users, page);
 
-		log.debug("GetAllUsers Command completed successfully");
+		log.debug("GetAllUsers Command completed successfully.");
 		return address;
 	}
 

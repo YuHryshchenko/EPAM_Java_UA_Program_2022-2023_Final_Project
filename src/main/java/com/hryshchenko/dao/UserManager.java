@@ -51,18 +51,17 @@ public class UserManager {
 	 * @return an instance of User.
 	 * @throws DBException
 	 */
-	public User getUser(String login) throws DBException {
-		log.debug("Starting getting user by login " + login);
+	public User getUserByLogin(String login) throws DBException {
+		log.debug("Starting getting user by login " + login + ".");
 		Connection con = null;
 		User user = null;
-
 		try {
 			con = daoFactory.getConnection();
-			user = userDAO.getUser(con, login);
-			log.info("Found user by login: " + login);
+			user = userDAO.getUserByLogin(con, login);
+			log.info("Found user by login: " + login + ".");
 		} catch (SQLException e) {
 			log.error("Failed to get user by login: " + login + ". " + e.getMessage());
-			throw new DBException("usermanager.get_login", e);
+			throw new DBException("user_manager.get_login", e);
 		} finally {
 			DBUtil.close(con);
 		}
@@ -76,18 +75,17 @@ public class UserManager {
 	 * @return an instance of User.
 	 * @throws DBException
 	 */
-	public User getUser(int id) throws DBException {
-		log.debug("Starting getting user by id " + id);
+	public User getUserById(int id) throws DBException {
+		log.debug("Starting getting user by id " + id + ".");
 		Connection con = null;
 		User user = null;
-
 		try {
 			con = daoFactory.getConnection();
-			user = userDAO.getUser(con, id);
-			log.info("Found user by id: " + id);
+			user = userDAO.getUserById(con, id);
+			log.info("Found user by id: " + id + ".");
 		} catch (SQLException e) {
 			log.error("Failed to get user by id: " + id + ". " + e.getMessage());
-			throw new DBException("usermanager.get_user", e);
+			throw new DBException("user_manager.get_user", e);
 		} finally {
 			DBUtil.close(con);
 		}
@@ -101,17 +99,16 @@ public class UserManager {
 	 * @throws DBException
 	 */
 	public List<User> getUsers() throws DBException {
-		log.debug("Starting getting all users");
+		log.debug("Starting getting all users.");
 		List<User> list = null;
 		Connection con = null;
-
 		try {
 			con = daoFactory.getConnection();
 			list = userDAO.getUsers(con);
-			log.info("List of all users is received");
+			log.info("List of all users is received.");
 		} catch (SQLException e) {
 			log.error("Failed to get list of all users. " + e.getMessage());
-			throw new DBException("usermanager.get_users", e);
+			throw new DBException("user_manager.get_users", e);
 		} finally {
 			DBUtil.close(con);
 		}
@@ -126,17 +123,16 @@ public class UserManager {
 	 * @throws DBException
 	 */
 	public List<CourseStudent> getStudentsOfCourse(Course course) throws DBException {
-		log.debug("Starting getting students of course " + course);
+		log.debug("Starting getting students of course " + course + ".");
 		List<CourseStudent> list = null;
 		Connection con = null;
-
 		try {
 			con = daoFactory.getConnection();
 			list = userDAO.getStudentsOfCourse(con, course);
-			log.info("Received list of course " + course);
+			log.info("Received list of course " + course + ".");
 		} catch (SQLException e) {
 			log.error("Failed to get list of course " + course + ". " + e.getMessage());
-			throw new DBException("usermanager.get_students", e);
+			throw new DBException("user_manager.get_students", e);
 		} finally {
 			DBUtil.close(con);
 		}
@@ -152,18 +148,17 @@ public class UserManager {
 	 * @throws DBException
 	 */
 	public void updateStudentsOfCourse(int courseId, int studentId, int mark) throws DBException {
-		log.debug("Starting updating marks");
+		log.debug("Starting updating marks.");
 		Connection con = null;
-
 		try {
 			con = daoFactory.getConnection();
 			userDAO.updateStudentsOfCourse(con, courseId, studentId, mark);
-			log.info("Marks are updated successfully");
+			log.info("Marks are updated successfully.");
 			DBUtil.closeCommitConnection(con);
 		} catch (SQLException e) {
 			log.error("Failed to update marks." + e.getMessage());
 			DBUtil.closeRollbackConnection(con);
-			throw new DBException("usermanager.edit_marks", e);
+			throw new DBException("user_manager.edit_marks", e);
 		}
 	}
 
@@ -176,16 +171,15 @@ public class UserManager {
 	public void register(User user) throws DBException {
 		log.debug("Starting registration of a new user.");
 		Connection con = null;
-
 		try {
 			con = daoFactory.getConnection();
 			userDAO.register(con, user);
-			log.info("Registered user " + user);
+			log.info("Registered user " + user + ".");
 			DBUtil.closeCommitConnection(con);
 		} catch (SQLException e) {
 			log.error("Failed to register new user. " + e.getMessage());
 			DBUtil.closeRollbackConnection(con);
-			throw new DBException("usermanager.register", e);
+			throw new DBException("user_manager.register", e);
 		}
 	}
 
@@ -196,18 +190,17 @@ public class UserManager {
 	 * @throws DBException
 	 */
 	public void updateUser(User user) throws DBException {
-		log.debug("Starting updating user " + user);
+		log.debug("Starting updating user " + user + ".");
 		Connection con = null;
-
 		try {
 			con = daoFactory.getConnection();
 			userDAO.updateUser(con, user);
-			log.info("Updated user " + user);
+			log.info("Updated user " + user + ".");
 			DBUtil.closeCommitConnection(con);
 		} catch (SQLException e) {
 			log.error("Failed to update user " + user + ". " + e.getMessage());
 			DBUtil.closeRollbackConnection(con);
-			throw new DBException("usermanager.edit_user", e);
+			throw new DBException("user_manager.edit_user", e);
 		}
 	}
 

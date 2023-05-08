@@ -22,26 +22,26 @@ public class EditCourseSaveCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws DBException, AppException {
-		log.debug("EditCourseSave Command starts");
+		log.debug("EditCourseSave Command starts.");
 
 		HttpSession session = request.getSession();
 		Course editCourse = (Course) session.getAttribute("editCourse");
 		log.debug("Course to edit is received.");
 
-		String address = "controller?command=courseinfo&course-id=" + editCourse.getId();
+		String address = "controller?command=course_info&course-id=" + editCourse.getId();
 		Course newCourse = null;
 		try {
 			newCourse = assembleNewCourse(request, editCourse);
 		} catch (ParseException e) {
-			log.error("Failure while getting date." + e);
-			throw new AppException("createcourse.date_failure", e);
+			log.error("Failure while getting date." + e.getMessage());
+			throw new AppException("edit_course.date_failure", e);
 		}
 
 		CourseManager.getInstance().updateCourse(newCourse);
-		String message = Localizator.getLocalizedString(request, "editcourse.info_message");
+		String message = Localizator.getLocalizedString(request, "edit_course.info_message");
 		session.setAttribute("infoMessage", message);
 
-		log.debug("EditCourseSave Command completed successfully");
+		log.debug("EditCourseSave Command completed successfully.");
 		return address;
 	}
 

@@ -22,7 +22,7 @@ public class CreateCourseSaveCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws DBException, AppException {
-		log.debug("CreateCourseSave Command starts");
+		log.debug("CreateCourseSave Command starts.");
 		String address = PagesConst.INDEX;
 
 		log.debug("Starting getting parameters.");
@@ -37,15 +37,15 @@ public class CreateCourseSaveCommand implements Command {
 		try {
 			course = assembleCourse(title, theme, teacherId, start, finish);
 		} catch (ParseException e) {
-			log.error("Failure while getting date." + e);
-			throw new AppException("createcourse.date_failure", e);
+			log.error("Failure while getting date." + e.getMessage());
+			throw new AppException("create_course.date_failure", e);
 		}
 
 		CourseManager.getInstance().createCourse(course);
-		String message = Localizator.getLocalizedString(request, "createcourse.info_message");
+		String message = Localizator.getLocalizedString(request, "create_course.info_message");
 		request.getSession().setAttribute("infoMessage", message);
 
-		log.debug("CreateCourseSave Command completed successfully");
+		log.debug("CreateCourseSave Command completed successfully.");
 		return address;
 	}
 

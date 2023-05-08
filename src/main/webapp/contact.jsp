@@ -2,7 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<!doctype html>
+
+<!DOCTYPE html>
 <html>
 <fmt:message var="title" key="contact_jsp.title" scope="page" />
 <head>
@@ -26,7 +27,7 @@
 
 					<div><fmt:message key="contact_jsp.info" /></div>
 					<form action="controller" method="post">
-						<input type="hidden" name="command" value="writeadmin" />
+						<input type="hidden" name="command" value="write_admin" />
 						<div class="form-group">
 							<label for="input-name"><fmt:message key="contact_jsp.name" /></label>
 							<input type="text" name="name" pattern="[a-zA-Zа-яА-ЯіІїЇєЄ '-]{3,50}" class="form-control" id="input-name" required="required" />

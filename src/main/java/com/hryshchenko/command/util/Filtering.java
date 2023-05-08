@@ -27,8 +27,8 @@ public class Filtering {
 	 * @param list
 	 * @return List of courses filtered by teacher.
 	 */
-	public static List<Course> filterList(int teacherId, List<Course> list) {
-		log.info("Filtering list of courses by teacher id" + teacherId);
+	public static List<Course> filterListCoursesByTeacher(int teacherId, List<Course> list) {
+		log.info("Filtering list of courses by teacher id" + teacherId + ".");
 		return list.stream().filter(c -> c.getTeacherId() == teacherId).collect(Collectors.toList());
 	}
 
@@ -39,8 +39,8 @@ public class Filtering {
 	 * @param list
 	 * @return List of courses filtered by theme.
 	 */
-	public static List<Course> filterList(String theme, List<Course> list) {
-		log.info("Filtering list of courses by theme " + theme);
+	public static List<Course> filterListCoursesByTheme(String theme, List<Course> list) {
+		log.info("Filtering list of courses by theme " + theme + ".");
 		return list.stream().filter(c -> c.getTheme().equalsIgnoreCase(theme)).collect(Collectors.toList());
 	}
 
@@ -52,8 +52,8 @@ public class Filtering {
 	 * @param list
 	 * @return List of courses by teacher and theme.
 	 */
-	public static List<Course> filterList(int teacherId, String theme, List<Course> list) {
-		log.info("Filtering list of courses by teacher id " + teacherId + " and theme " + theme);
+	public static List<Course> filterListCourses(int teacherId, String theme, List<Course> list) {
+		log.info("Filtering list of courses by teacher id " + teacherId + " and theme " + theme + ".");
 		return list.stream().filter(c -> c.getTeacherId() == teacherId)
 				.filter(c -> c.getTheme().equalsIgnoreCase(theme)).collect(Collectors.toList());
 	}

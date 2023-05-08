@@ -28,7 +28,7 @@ public class GetAllCoursesCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws DBException {
-		log.debug("GetAllCourses Command starts");
+		log.debug("GetAllCourses Command starts.");
 		String address = PagesConst.COURSES;
 
 		int teacher = Integer.parseInt(request.getParameter("teacher"));
@@ -44,7 +44,7 @@ public class GetAllCoursesCommand implements Command {
 		coursesList = sort(sort, coursesList);
 		request = setAttributes(request, coursesList, page);
 
-		log.debug("GetAllCourses Command completed successfully");
+		log.debug("GetAllCourses Command completed successfully.");
 		return address;
 	}
 
@@ -59,13 +59,13 @@ public class GetAllCoursesCommand implements Command {
 	private List<Course> filter(int teacher, String theme, List<Course> list) {
 		if (teacher != 0 && theme.equalsIgnoreCase("all")) {
 			log.debug("Filtering courses by teacher.");
-			list = Filtering.filterList(teacher, list);
+			list = Filtering.filterListCoursesByTeacher(teacher, list);
 		} else if (teacher == 0 && !theme.equalsIgnoreCase("all")) {
 			log.debug("Filtering courses by theme.");
-			list = Filtering.filterList(theme, list);
+			list = Filtering.filterListCoursesByTheme(theme, list);
 		} else if (teacher != 0 && !theme.equalsIgnoreCase("all")) {
 			log.debug("Filtering courses by teacher and theme.");
-			list = Filtering.filterList(teacher, theme, list);
+			list = Filtering.filterListCourses(teacher, theme, list);
 		}
 		return list;
 	}

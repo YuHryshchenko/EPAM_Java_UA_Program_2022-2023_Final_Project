@@ -30,7 +30,6 @@ public class SaltGenerator {
 			symbol = ALPHABET.charAt(index);
 			sb.append(symbol);
 		}
-
 		log.debug("Salt is generated successfully.");
 		return sb.toString();
 	}

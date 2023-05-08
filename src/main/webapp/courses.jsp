@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t" %>
 
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <fmt:message var="title" key="courses_jsp.title" scope="page" />
 <head>
@@ -22,7 +22,7 @@
 				<div class="col-md-8 divmain">
 					<h3><fmt:message key="courses_jsp.h3" /></h3>
 					<form action="controller" method="get" class="form-inline my-form">
-						<input type="hidden" name="command" value="getallcourses" />
+						<input type="hidden" name="command" value="get_all_courses" />
 						<div class="form-group">
 							<fmt:message key="courses_jsp.teacher" /> <select name="teacher" class="form-control">
 								<option value="0"><fmt:message key="courses_jsp.all_teachers" /></option>

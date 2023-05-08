@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <fmt:message var="title" key="error_jsp.title" scope="page" />
 <head>
