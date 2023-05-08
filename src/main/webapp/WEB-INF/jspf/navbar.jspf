@@ -30,13 +30,17 @@
 						<option value="${locale.key}" ${selected}>${locale.value}</option>
 					</c:forEach>
 				</select>
-				<%
-				    String requestCleanURL = (request.getAttribute("requestCleanURL") != null) ?
-				        (String) request.getAttribute("requestCleanURL") : request.getServletPath();
-				    String requestString = (request.getQueryString() == null) ? requestCleanURL :
-                    				requestCleanURL + "?" + request.getQueryString();
-                    pageContext.setAttribute("requestString", requestString); %>
-				<%-- <input type="hidden" name="current_url" value='${pageContext.request.requestURL}' /> --%>
+
+                    <%
+                        String requestCleanURL = (request.getAttribute("requestCleanURL") != null) ?
+                            (String) request.getAttribute("requestCleanURL") : request.getServletPath();
+                        requestCleanURL = request.getContextPath() + "/" + requestCleanURL;
+                        requestCleanURL = requestCleanURL.replaceAll("//", "/");
+                        String requestString = (request.getQueryString() == null) ? requestCleanURL :
+                                        requestCleanURL + "?" + request.getQueryString();
+                        pageContext.setAttribute("requestString", requestString); %>
+                    <%-- <input type="hidden" name="current_url" value='${pageContext.request.requestURL}' /> --%>
+
 				<input type="hidden" name="current_url" value="${requestString}" />
 				<input type="submit" value="<fmt:message key="navbar.select" />" class="formlocale" />
 			</form>

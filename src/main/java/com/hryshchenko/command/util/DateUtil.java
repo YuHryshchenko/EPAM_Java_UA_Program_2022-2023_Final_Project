@@ -31,7 +31,7 @@ public class DateUtil {
 		try {
 			currentDate = dateFormat.parse(currentDateString);
 		} catch (ParseException e) {
-			log.error("Failed to get current date. " + e + ".");
+			log.error("Failed to get current date. " + e.getMessage() + ".");
 			throw new AppException("date_util.failure", e);
 		}
 		log.debug("Current date is received.");
