@@ -53,7 +53,7 @@ public class EditCourseSaveCommand implements Command {
 	 * @return An updated instance of course.
 	 * @throws ParseException
 	 */
-	private Course assembleNewCourse(HttpServletRequest request, Course editCourse) throws ParseException {
+	public Course assembleNewCourse(HttpServletRequest request, Course editCourse) throws ParseException {
 		Course newCourse = new Course();
 		String start = request.getParameter("start-date");
 		String finish = request.getParameter("finish-date");

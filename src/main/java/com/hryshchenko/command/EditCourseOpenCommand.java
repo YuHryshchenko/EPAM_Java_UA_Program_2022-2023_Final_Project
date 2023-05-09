@@ -17,7 +17,8 @@ import java.util.List;
 public class EditCourseOpenCommand implements Command {
 	private static final Logger log = LogManager.getLogger(EditCourseOpenCommand.class);
 
-	@Override
+
+    @Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws DBException {
 		log.debug("EditCourseOpen Command starts.");
 		String address = PagesConst.EDIT_COURSE;

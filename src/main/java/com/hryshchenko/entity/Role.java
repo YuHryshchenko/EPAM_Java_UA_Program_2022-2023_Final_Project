@@ -7,7 +7,17 @@ package com.hryshchenko.entity;
  *
  */
 public enum Role {
-	ADMIN, TEACHER, STUDENT;
+	ADMIN(0), TEACHER(1), STUDENT(2);
+
+	private final int value;
+
+	Role(int value) {
+		this.value = value;
+	}
+
+	public int getValue() {
+		return value;
+	}
 
 	/**
 	 * Getting role of given user.

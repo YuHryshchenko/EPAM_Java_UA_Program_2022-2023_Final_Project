@@ -204,7 +204,23 @@
 			<artifactId>tomcat9-war-runner</artifactId>
 			<version>3.0.1</version>
 		</dependency>
-	</dependencies>
+		<dependency>
+			<groupId>com.github.h-thurow</groupId>
+			<artifactId>simple-jndi</artifactId>
+			<version>0.23.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.200</version>
+		</dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>5.9.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<finalName>epam-facultative</finalName>
