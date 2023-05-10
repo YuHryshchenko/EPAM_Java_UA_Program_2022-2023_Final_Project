@@ -56,7 +56,7 @@ public class LoginCommand implements Command {
 	 * @param password
 	 * @return Boolean
 	 */
-	private boolean authorize(HttpServletRequest request, User user, String password) {
+	public boolean authorize(HttpServletRequest request, User user, String password) {
 		if (user == null) {
 			log.error("Wrong login. Not found user. ");
 			String message = Localizator.getLocalizedString(request, "login.wrong_login");
@@ -90,7 +90,7 @@ public class LoginCommand implements Command {
 	 * @return session with attributes
 	 * @throws DBException
 	 */
-	private HttpSession setAttributes(User user, HttpSession session) {
+	public HttpSession setAttributes(User user, HttpSession session) {
 		Role role = Role.getRole(user);
 		session.setAttribute("authorizedUser", user);
 		session.setAttribute("role", role);
