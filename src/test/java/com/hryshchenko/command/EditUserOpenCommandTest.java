@@ -10,7 +10,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 
 import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
@@ -81,8 +80,6 @@ public class EditUserOpenCommandTest {
 
         userManager = Mockito.mock(UserManager.class);
 
-        MockitoAnnotations.openMocks(this);
-
         final int id = 1;
         final String expectedAddress = PagesConst.EDIT_USER;
 
@@ -94,7 +91,6 @@ public class EditUserOpenCommandTest {
         //when(UserManager.getInstance()).thenReturn(userManager);
         when(userManager.getUserById(id)).thenReturn(editUser);
 
-        EditUserOpenCommand editUserOpenCommand = new EditUserOpenCommand();
         String actualAddress = editUserOpenCommand.execute(request, response);
     //    DBUtil.close(rs);
 
