@@ -42,9 +42,11 @@ public class RegisterCommand implements Command {
 		}
 		log.debug("Parameters for Register command are received.");
 
+
 		User user = assembleUser(login, password, email, firstName, lastName, roleId);
 		UserManager.getInstance().register(user);
 		sendRegistrationMessage(email, firstName, lastName);
+
 
 		String message = Localizator.getLocalizedString(request, "register.info_message");
 		request.getSession().setAttribute("infoMessage", message);

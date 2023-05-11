@@ -10,7 +10,8 @@ import java.io.Serializable;
  */
 public class User implements Serializable {
 
-	private int id;
+	public static Object Role;
+    private int id;
 	private String login;
 	private String password;
 	private String salt;
